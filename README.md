@@ -13,7 +13,10 @@
      Why is this knowledge valuable, and why is it hard to find through official channels?
      Example: "Student reviews of CS professors at [university] — useful because official
      course descriptions don't reflect teaching style, exam difficulty, or workload." -->
+Domain: Course and Professor Reviews
 
+I choose to work with the domain of course and professor reviews because students heavily rely on other students' experiences and opinion when deciding which classes to take and professors to choose. This knowledge is valuable because it provides insights into teaching style, workload, grading practices, exam difficulty, and overall course quality.
+This information is difficult to find through official channels because university course catalogs and department websites typically only provide basic descriptions, prerequisites, and schedules. Detailed student experiences are scattered across platforms or website like Rate My Professors, Reddit discussions, university forums, and unofficial review sites, making it time-consuming for students to gather and compare information.
 ---
 
 ## Document Sources
