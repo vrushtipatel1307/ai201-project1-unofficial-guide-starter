@@ -14,6 +14,7 @@ Domain: Course and Professor Reviews
 
 I choose to work with the domain of course and professor reviews because students heavily rely on other students' experiences and opinion when deciding which classes to take and professors to choose. This knowledge is valuable because it provides insights into teaching style, workload, grading practices, exam difficulty, and overall course quality.
 This information is difficult to find through official channels because university course catalogs and department websites typically only provide basic descriptions, prerequisites, and schedules. Detailed student experiences are scattered across platforms or website like Rate My Professors, Reddit discussions, university forums, and unofficial review sites, making it time-consuming for students to gather and compare information.
+
 ---
 
 ## Documents
@@ -28,9 +29,9 @@ This information is difficult to find through official channels because universi
 | 3 |Rate my Professor|Mark Grinshpon (Mathematics) professor reviews|https://www.ratemyprofessors.com/professor/949752|
 | 4 |Rate my Professor|Cyntoria Johnson (Criminal Justice) professor reviews|https://www.ratemyprofessors.com/professor/1597666|
 | 5 |Reddit|"Prof recommendations" discussion thread|https://www.reddit.com/r/GaState/comments/1on3m4y|
-| 6 |Reddit|Accounting professor recommendations for georgia state university|https://www.reddit.com/r/GaState/comments/1s9sp6e/best_professor_for_accounting_2102/|
+| 6 |Reddit|worst professor ever for georgia state university|https://www.reddit.com/r/GaState/comments/1j2vi0e/worst_professor_you_ever_had/|
 | 7 |Coursicle|CIS 3260 course reviews and professor feedback|https://www.coursicle.com/gsu/courses/CIS/3260/|
-| 8 |Reddit|Discussion about poor professor experiences and reporting concerns|https://www.reddit.com/r/GaState/comments/1bjs1cq|
+| 8 |Reddit|Best Professor ever|https://www.reddit.com/r/GaState/comments/1j3u9bk/best_professor_youve_had_so_far/|
 | 9 |Professor dicrectory|Georgia State professor review directory|https://www.professors.directory/school/ga-georgia_state_university/|
 | 10 |Reddit|Georgia State University subreddit (general source for professor/course discussions)|https://www.reddit.com/r/GaState/|
 
@@ -103,7 +104,7 @@ This information is difficult to find through official channels because universi
      Label each stage with the tool or library you're using.
      You can use ASCII art, a Mermaid diagram, or embed a sketch as an image.
      You'll use this diagram as context when prompting AI tools to implement each stage. -->
-
+     Project1.drawio-1.png
 ---
 
 ## AI Tool Plan
@@ -119,7 +120,19 @@ This information is difficult to find through official channels because universi
      with my specified chunk size and overlap" is a plan. -->
 
 **Milestone 3 — Ingestion and chunking:**
+- Tool: Claude.
+- Input: the Documents section, the Chunking Strategy section, and the pipeline diagram.
+- Task: implement `ingest.py` with a `load_documents()` function that reads `.txt` files and a `chunk_text()` function that splits text into 400-character chunks with 50-character overlap.
+- Verification: print 5 random chunks and confirm each one reads as a complete, standalone thought with no HTML artifacts.
 
 **Milestone 4 — Embedding and retrieval:**
+- Tool: Claude.
+- Input: the Retrieval Approach section and the architecture diagram.
+- Task: implement `embed.py` to embed all chunks using `sentence-transformers` with `all-MiniLM-L6-v2`, store them in ChromaDB with source filename metadata, and include a `retrieve(query)` function.
+- Verification: run 3 evaluation questions and check returned chunks are visibly relevant and distance scores are below 0.5.
 
 **Milestone 5 — Generation and interface:**
+- Tool: Claude.
+- Input: the grounding requirement (answer only from retrieved context, cite sources) and the Gradio skeleton from the project instructions.
+- Task: implement `app.py` that connects retrieval to Groq's `llama-3.3-70b-versatile` and displays the answer plus source filenames.
+- Verification: ask a question not covered by the documents and confirm the system says it does not have enough information rather than hallucinating.
